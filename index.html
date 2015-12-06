@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+      html, body { height: 100%; margin:0; padding: 0; }
+      #map { width: 97vw; height: 80vh; margin: 0 auto ; }
+    </style>
+      <title>Ghosts of NC</title>
+<link href='https://fonts.googleapis.com/css?family=Jim+Nightshade|Oswald' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+</head>
+
+
+    
+<body>
+    <div id="title">Ghosts of Eastern North Carolina</div>
+    
+    <div id="map"></div>
+
+    <script type="text/javascript">
+var map;
+function initMap() {
+
+//marker locations
+var greenville = { lat:35.592304, lng:-77.357787};
+var ocracoke = { lat: 35.156588,lng: -75.959273};
+var teach = {lat: 35.230349, lng: -75.682782};
+var roanoke = {lat:35.867046, lng:-75.655314};
+var maco = {lat:34.291911, lng:-78.201883};
+var elizabeth = {lat:36.301482, lng:-76.222051};
+var bath = {lat:35.473027, lng:-76.812912};
+ 
+var styles = [
+  {
+    "featureType": "water",
+    "stylers": [
+      { "lightness": 12 },
+      { "color": "#cc7722" },
+      { "invert_lightness": true }
+    ]
+  },{
+    "featureType": "landscape.natural",
+    "stylers": [
+      { "color": "#b2681e" }
+    ]
+  },{
+    "featureType": "road",
+    "elementType": "labels.icon",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "road",
+    "stylers": [
+      { "color": "#4b2d0e" },
+      { "weight": 0.2 },
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "poi.park",
+    "stylers": [
+      { "visibility": "simplified" },
+      { "color": "#b2721f" }
+    ]
+  },{
+    "featureType": "administrative.locality",
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      { "color": "#d93622" },
+      { "weight": 0.8 }
+    ]
+  },{
+    "featureType": "administrative.locality",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      { "color": "#992618" },
+      { "visibility": "on" }
+    ]
+  },{
+    "featureType": "landscape.man_made",
+    "stylers": [
+      { "color": "#7f4a15" }
+    ]
+  },{
+    "featureType": "poi",
+    "stylers": [
+      { "color": "#98591a" }
+    ]
+  },{
+    "featureType": "transit.station",
+    "stylers": [
+      { "color": "#666666" }
+    ]
+  }
+];
+
+var styledMap = new google.maps.StyledMapType(styles,{name:"Ghosts of NC"});
+
+var image = 'icons/Ghost3.png';
+    
+var mapOptions = {
+    center: greenville,
+    zoom:08,
+    mapTypeControlOptions:{
+    mapTypeIds: [google.maps.MapTypeId.TERRAIN, 'map_style']
+  }
+};
+    
+map = new google.maps.Map(document.getElementById('map'),mapOptions);
+    map.mapTypes.set('map_style', styledMap);
+    map.setMapTypeId('map_style');
+
+    
+//windows
+    
+    var contentString ='<div id="content" style="height:250px;">'+'<img src="flaming-ship-ocracoke.jpg" style="float:right; margin-left:8px;">'+'<h1> The Flaming Ship of Ocracoke</h1>' + '<p> It is said that during the first new moon each September, a strange and ghastly sight can be seen off of Ocracoke Island. Here, in the waters off the Outer Banks, each year on that one night a phantom ship, engulfed in flames, floats silently by the island and disappears into the night. How this came to be takes us back to the early days of the North Carolina colony, to days of settlers and pirates, and to the reign of Queen Anne.</p>'+
+
+    '<p>In the late Seventeenth and early Eighteenth Centuries, the religious wars that ravaged Europe caused mass migrations of people displaced by the conflicts. England, allied by shared Protestant faith and by marriage bonds to the Palatine States in what is today Germany and Switzerland, opened her doors to thousands of German-Speaking refugees from these small principalities. These refugees were not ordinary peasants, but well-to-do skilled craftsmen and trade workers. The presence of so much unemployed skilled labor served to disrupt the English economy, and so the question of what to do with all these Palatines became pressing on Parliament and on the Queen.</p>'+
+
+        '<p>A swiss baron, Cristoph von Graffnreid, offered a solution. With the permission of the Crown, he would escort a large number of these refugees to a settlement in the Carolina colonies, to be called New Berne. The plan was met with delight, and the transportation of the Palatine colonists soon began.</p>'+
+
+'<p>It was on one of these voyages that the captain of the chartered vessel, an unscrupulous and greedy man, noticed that his passengers were carrying an unusual amount of gold, jewels, and other wealth with them. Whatever family treasures the Palatines had managed to get out of their homelands were now being taken to the New World. Eyeing this wealth, the greedy captain hatched a plan.</p>'+
+
+'<p>As the ship drew closer to the American coast and the Outer Banks were in sight, the captain put his plan into action, and enlisted the help of his equally greedy crew. One night, the crew crept below decks and, one by one, slit the throat of every man, woman, and child on board as they slept. They then loaded the passengers treasure on the ships long boat and determined to set out for the pirates refuge at Bath</p>'+
+
+'<p>To cover up the crime, the men doused the decks with oil, and as they dropped the long boat into the ocean, set the ship on fire. Soon, the entire ship was engulfed in flames.</p>'+
+
+'<p>As the captain and his men gleefully rowed the long boat away from the flaming ship, they laughed and bragged to each other about their deed. But then the captain looked back towards the flaming ship, and what he saw shocked him. Though the sails were down and the night was still the ship was moving. It was plowing through the waters at high speed, as though it was at full sail and being steered, although there was not a living soul on board. And the ship was coming right towards them.</p>'+
+
+'<p>Panicked, the crew rowed fiercely trying to avoid the oncoming ship, but it was no use. The flaming ship rammed the longboat, sinking it, the treasure, and the murderers beneath the waves. The next day, the burned husk of the ship washed ashore on Ocracoke.</p>'+
+
+'<p>Each year, this strangle spectacle is reenacted off the coast of Ocracoke. If you look into the waters off of the Northeast corner of the island during the first new moon in September, you might see it, too.</p>'+'</div>';
+    
+    var contentString2 ='<div id="content" style="height:250px; font-size:12px; ">'+'<img src="blackbeard-flag.jpg" style="float:right; margin-left:8px;">'+'<h1>The Ghost of Blackbeard</h1>' + '<p> On Ocracoke Island lies a spot known as Teachs Hole. This small inlet is reported to be the spot where the pirate Edward Teach, better known as Blackbeard, preferred to anchor his ship. Its also said to be where he met his end, and some say his ghost haunts the spot to this day.</p>'+
+
+'<p>Blackbeard roamed the Atlantic from around 1716 until 1718, robbing ships from the West Indies to the Carolinas. He had a reputation for unbridled ferocity. When Blackbeard went into battle, he strapped multiple pistols and multiple cutlasses to his body. Most frightening of all, he wove fuses into his long, black beard and set them on fire just before he stepped on to the captured ship. This towering figure, armed to the teeth, with a sparking, flaming beard must have been absolutely terrifying. Ships captains would surrender without a shot being fired.</p>'+
+
+'<p>Blackbeards reign on the high seas came to an end on November 22, 1718. Virginia Governor Alexander Spotswood sent a ship commanded by John Maynard down to the North Carolina coast to track down and kill Blackbeard. Maynard surprised Blackbeard and a skeleton crew anchored at Teachs Hole. In the ferocious battle he followed, Blackbeard was shot five times and stabbed no less than twenty. The pirate crew was all killed or captures.</p>'+
+
+'<p>Blackbeards head was chopped off and hung from the bowsprit of Maynards ship. His headless body was thrown overboard. Legend has it that the headless body swam around Maynards ship three times before sinking below the waters.</p>'+
+
+'<p>Ever since then, its been said that Blackbeards ghost haunts the spot known as Teachs Hole. Many people have reported seeing a strange light moving beneath the water in the cove. Its said that this is Blackbeards spirit, swimming through the waters, searching for his missing head.</p>'+
+
+'<p>Whats more, on stormy nights its said that you can hear Blackbeards voice calling out in the wind. Many people have heard a horrible roaring coming from the wind on dark and stormy nights in Teachs Cove, a roaring that sounds like someone bellowing "Wheres my head?"</p>'+'</div>';
+    
+    var contentString3 ='<div id="content" style="height:250px; font-size:12px; ">'+'<img src="virginia-dare-white-doe.jpg" style="float:right; margin-left:8px;">'+'<h1>Virginia Dare, the White Doe</h1>' + '<p> On August 27, 1587 Governor John White sailed form Roanoke Island to return to England for supplies. He left behind the first settlement in the new English colony of Virginia, consisting of eighty-nine men, seventeen women, and eleven children. One of those children was his own granddaughter, the first English child to be born in the New World — Virginia Dare. None of these colonists were ever seen again by English eyes.</p>'+
+
+'<p>White had intended to return to the Roanoke colony the next year, but the threat of Spanish invasion with the great Armada of 1588 and the constantly-shifting politics of the Elizabethan court delayed Whites return until 1590. When he arrived, he found the colony abandoned, the only clue to the fate of the colonists being the word CROATOAN carved into a tree. This was the name of a nearby island, the home of the english-speaking Croatan Indian Manteo. Manteo and another Croatan, Wanchese, had journeyed to England in 1584, returning with the reconnoissance expedition for the colony. White was unable to make a thorough search of the islands, due to the threat of a large storm and the growing impatience of a captain eager to turn south and hunt for Spanish treasure ships. By the time of the next attempt at Colonization in 1608 at Jamestown, the fate of the Lost Colonists had already become the stuff of legend.</p>'+
+
+'<p>One of these legends that has been told time and again on the North Carolina Outer Banks follows the sad, strange fate of that first English child born on New World soil.</p>'+
+
+'<p>According to the legend, Wanchese was fearful of the threat posed by the Englishmen and plotted with a nearby tribe to lead a sneak attack against the colonists. Fleeing for their lives, the colonists were gathered together by Manteo to escape and join his tribe. It was Elanor Dare, the mother of Virginia, who had the foresight to carve their destination in a tree, with her husband dead of an indian arrow at her feet and her precious child clutched into her arms.</p>'+
+
+'<p>But a good number of the colonists did escape, and they lived peacefully with the Croatan Indians. Young Virginia Dare grew to be a beautiful maiden, whose natural grace and virtue made her and example to all who knew her, colonists and Indians alike. As she became a young woman, she naturally attracted the attentions of suitors. Among these young men were the noble Okisko, and a jealous sorcerer named Chico.</p>'+
+
+'<p>Chico was the first to offer his hand to the young Virginia Dare, but the maiden refused his advanced. Enraged, he used his dark arts to curse the girl, and transformed her body into that of a snow-white deer.</p>'+
+
+'<p>The mysterious white doe was often seen on Roanoke, sadly walking through the now-overgrown and decaying houses built by her people. The story of this beautiful, elusive creature soon spread to all the tribes on the islands.</p>'+
+
+'<p>Now, Okisko, Virginia Dares other suitor, figured that this white doe had shown up about the same time Virginia Dare had gone missing. Reckoning that his rival in love was a pretty hand at the dark arts, it didnt take him long to figure out that this white doe was his own beloved. Seeking the help of a friendly sorcerer, he learned how to make a magic arrowhead from the mother-of-pearl lining of an oyster shell that would undo the curse.</p>'+
+
+'<p>But Wanchese had also heard of the white doe, and in a bid to prove his worth as a warrior he vowed to kill the rare creature. To this end, he pledged to use a silver arrowhead given to him by Queen Elizabeth when he had been in England.</p>'+
+
+'<p>Okisko and Wanchese, unknown to one another, both tracked the white doe for weeks — one pledged to return her to her true form, the other sworn to bring her death. And as it happened, they came upon the deer at the same hour of the same day, as she was drinking from a still, deep pool in the forest. Okisko saw his beloved, Wanchese saw his prey, and at the same time they both released their arrows. At the same time, both their arrows hit the heart of the white deer, Okiskos undoing the enchantment and Wancheses bringing death.</p>'+
+
+'<p>Seeing what he had done, Wanchese fled the island in fear, but Okisko sadly carried the body of his beloved to the old fort built by the colonists and buried her at its center.</p>'+
+
+'<p>But soon by that pool where Virginia Dare died, a new vine sprung up, whose grapes were sweeter than any tasted before but whose juice was a red as blood. This was the scuppernong, the grape from which the first Nort</p>'+'</div>';
+    
+    var contentString4 ='<div id="content" style="height:250px;">'+'<img src="maco-light.jpg" style="float:right; margin-left:8px;">'+'<h1> The Maco Light</h1>' + '<p> For over a century, mysterious lights were seen bobbing up and down along the railroad tracks near Maco Station, a few miles west of Wilmington. When anyone approached the lights, they would disappear. The lights were observed many times over many years, and even photographed on occasion. Its even said that President Grover Cleveland saw the lights while on whistle stop tour in 1889. The source of these lights has never been determined, but according to legend the light is the ghost of a railroad worker who died on the tracks one night in 1867.</p>'+
+
+'<p>On that tragic night in 1867, a train was rolling along the tracks and the signalman, Joe Baldwin, was sleeping in the caboose. Joes slumber was broken by a violent jerk. A veteran railroad worker, Joe Baldwin recognized the motion and immediately knew that the caboose had become detached from the rest of the train.</p>'+
+
+'<p>Joe Baldwins heart started racing. He knew that his one car was now stuck on the tracks, and that the main part of the train was rapidly moving away from him and he had no way of contacting it. Joe also knew that his wasnt the only train scheduled for those tracks that night. A passenger train was due along soon, and if the oncoming train struck the stalled caboose there would be a horrible accident.</p>'+
+
+'<p>Joe Baldwin had a choice to make. He knew that he had to signal the oncoming train to stop. He knew that the only way to do this and be sure the engineer in the approaching train would see the signal was to stand on the platform at the back of the caboose.</p>'+
+
+'<p>Joe Baldwin also knew that it takes a long time to stop a speeding train. Even if the engineer saw the light and stopped, there might be time to slow down enough to prevent a complete disaster, but the chances were good that the caboose was still about to be hit. And Joe Baldwin that if that happened, he didnt stand much of a chance of walking away from that crash.</p>'+
+
+'<p>Baldwin made the heroic choice. Grabbing his lantern, Joe Baldwin stood on the back of the caboose as the sound of an oncoming passenger train rumbled closer. Joe frantically waved his warning light, trying desperately to catch the attention f the engineer.</p>'+
+
+'<p>Joes plan worked. The engineer of the oncoming train saw the light and pulled hard on his brakes. But the momentum of the tons of speeding steel kept the train moving, and the locomotive slammed into Joes caboose. Joes signals had worked. His bravery had prevented a more serious collision. But brave Joe Baldwin was decapitated in the crash.</p>'+
+
+'<p>Joes head was thrown by the force of the accident into the murky swamps that surrounded the tracks. It was never found. His headless body was buried with heros honors a week later.</p>'+
+
+'<p>Ever since that night, lights have been seen moving up and down the track around Maco. Sometimes its only one light, sometimes its two. People says that its the ghost of Joe Baldwin, still searching for his missing head.</p>'+'</div>';
+    
+    var contentString5 ='<div id="content" style="height:250px;">'+'<img src="ghost-nell-cropsey.jpg" style="float:right; margin-left:8px;">'+'<h1> The Ghost of Nell Cropsey</h1>' + '<p> On the night of November 20, 1901, a young woman named Nell Cropsey disappeared from her home in Elizabeth City. Thirty-seven days later, her body was found floating in the Pasquotank River. Who killed Nell Cropsey and why has never been completely uncovered. But some say that her uneasy spirit still haunts her home in Elizabeth City.</p>'+
+
+'<p>The Cropsey family had moved to Elizabeth City in 1898 from Brooklyn, New York. Young Nell Cropsey was a beautiful woman from a wealthy family, and she soon be can attracting the attention of suitors. Nell began being courted by a local man named Jim Wilcox. At the time of her disappearance, Wilcox and Cropsey had been courting for nearly three years, and its said that Nell was growing impatient with Jim Wilcoxs hesitancy to propose marriage. Nell Cropsey began flirting with other men in public in an attempt to spurn Wilcox into proposing. Instead, that evening of November 20, Cropsey and Wilcox had a huge argument. Although some of Nells family who were in the house at the time said that she and Wilcox had tentatively made up by the end of the evening, when Cropsey steeped outside the door with Wilcox around eleven p.m. was the last time she was seen alive.</p>'+
+
+'<p>Ollie Cropsey, Nells sister, heard something bang against the back of the house shortly after Nell and Jim Wilcox left. Going out to investigate, she found that the screen door was broken and saw no sign of Nell or Wilcox. Ollie Cropsey went upstairs to see if her sister was already in bed, but found her room empty. Shortly thereafter, a neighbor woke the entire house, yelling that someone was trying to steal the Cropseys pig. When the family rushed downstairs, they found the front door was wide open. Jim Wilcoxs umbrella, which had been a gift from Nell, was standing inside the door.</p>'+
+
+'<p>The hunt for Nell Cropsey began in earnest the next morning. The town was searched high and low, but no trace of Nell was found. Suspicion immediately fell on Jim Wilcox, who maintained that he had no idea what had happened to Nell. Wilcox was arrested on suspicion of kidnapping. The family remained in limbo until December 27th, when Mrs. Cropsey spotted something floating in the Pasquotank River near the family home. Sending some boatmen out to investigate, she crushingly realized that her long vigil was over. The boatmen had retrieved her daughters body.</p>'+
+
+'<p>Curiously, a few days earlier the family had received a letter with a New York postmark laying out what seemed to be a detailed account of the events of the night of Nells disappearance. The letter stated that Nell Cropsey had discovered a vagrant attempting to steal the family pig. Upon being discovered, the man grabbed a heavy stick and knocked Nell unconscious, carrying her off and tearing a nearby boat. He rowed out into the river and dumped Nell Cropsey in the Pasquotank. The letter included a map which marked the spot where the body could be found. The spot marked on the map was very close to where Nell Cropseys body was eventually discovered.</p>'+
+
+'<p>With the discovery of Cropseys body, the town went mad. A lynch mob descended on the jail, demanding Wilcox be released into their hands. Nells parents refused to join the mob, and pleaded with the crowd to let justice be served in the courts. Eventually, Governor Aycock sent in a small naval reserve group to disperse the crowd.</p>'+
+
+'<p>Wilcox was tried twice for Cropseys murder. The fitrst guilty conviction was overturned when the NC Supreme Court declared a mistrial. A second trial convicted Wilcox on a charge of second degree murder an sentenced him to thirty years in prison. At neither trial did Wilcox take the stand in his own defense.</p>'+
+
+'<p>Wilcox was pardoned by Governor Thomas Bickett in 1920. To the end of his life, Wilcox maintained his innocence.</p>'+
+
+'<p>Shortly before his death in 1932, Wilcox spoke with W.O. Saunders, the editor of the Elizabeth City newspaper, and revealed everything he knew about the murder. Saunders walked away from the interview convinced Wilcox was innocent, and planned to publish the full details. Two weeks after that interview, Jim Wilcox committed suicide. Saunders died shortly thereafter in car accident. Whaever Wilcox had told Saunders would now never be heard.</p>'+
+
+'<p>For the past century, those who have lived in the Cropsey home have reported strange happenings. Lights have gone on and off by themselves, doors open and shut of their own accord, and storage gusts of cold air move through the house.</p>'+
+
+'<p>The pale figure of a young woman has also been seen moving through the house. Many people passing by on the street outside have reported seeing the ghostly figure of a girl looking out of an upstairs window. Residents say that the figure of Nell Cropsey has even appeared in their bedrooms at night.</p>'+
+
+'<p>Is the unfortunate victim of one of North Carolinas most famous and sensational murder cases still wandering through her home in Elizabeth city? Will the true facts around Nell Cropsess murder ever be known? This enduring mystery has become part of the living history of Elizabeth City, and no visit to this quiet coastal town is complete without a walk by the Cropsey home.</p>'+'</div>';
+    
+    var contentString6 ='<div id="content" style="height:250px; font-size:12px;">'+'<img src="bath-hoofprints.jpg" style="float:right; margin-left:8px;">'+'<h1> The Bath Hoofprints</h1>' + '<p>In 1802, there was a young man named named Jesse Elliot who lived in the little coastal town of Bath. Elliot was a gambler, a brawler, a drunkard, but most of all he was a racer. Jesse Elliot was the extremely proud owner of fiery black stallion. Elliot would race anyone, anywhere, any time on this strong and swift horse. Many riders challenged Jesse Elliot to a race. And Jesse Elliot always won.</p>'+
+
+'<p>One day, a tall man appeared in the town and approached Elliot, saying hed heard of his racing fame and of his magnificent black horse. The man said he had a horse he thought was just as strong and just as fast as Elliots, and that hed like to try his horse and his skill against Elliot and his stallion.</p>'+
+
+'<p>Elliot quickly agreed, and the two men arranged to meet for the race in one hour. It was a Sunday. Elliot went home to get his horse. He pulled on his riding boots, threw back a few shots, and prepared for the race. His wife, a devout woman, was alarmed that he was intent on racing on a Sunday.</p>'+
+
+        '<p>Elliot scoffed at her. His wife, fed up with her husbands wicked ways, shouted at him as he rode off, "I hope youre taken to Hell this very day!"</p>'+
+
+'<p>When Elliot arrived at the course, he saw the stranger already waiting for him on a midnight black stallion, larger and more fiery than any Elliot had ever seen. And atop that angry horse was the stranger, also dressed all in black, with an evil fire in his eyes that burned fearfully.</p>'+
+
+'<p>Frightened, Elliot paused for a moment, but his greed for racing consumed him and he urged his stallion on, shouting "Take me a winner or take me to hell!"</p>'+
+
+'<p>Elliots horse charged ahead, and the stranger lagged behind. He seemed to be taking his time, keeping a length behind Elliot and his stallion.</p>'+
+
+'<p>As they neared the finish line, the strangers horse put on a great burst of speed and drew right along side Elliot. And as soon as it did, Elliots own horse dug its feet into the grown, throwing Jesse Elliot rider into a tree and killing him instantly.</p>'+
+
+'<p>As for the stranger, its said that he just laughed, and rode back to his home in Hell with Jesse Elliots soul astride his black stallion.</p>'+
+
+'<p>Soon after the accident, the minister at St. Thomas Church began preaching about the footprints as an example for the fate that awaits all young sinners.</p>'+
+
+'<p>The footprints where Jesse Elliots horse dug its feet into the sand can still be seen to this day. Its said that nothing will grow in those hoofprints, that no bird will eat seed scattered in them, and that nothing left in the tracks will stay there overnight.</p>'+'</div>';
+    
+    
+    var infoWindow = new google.maps.InfoWindow({
+        content:contentString
+    });
+    
+    var infoWindow2 = new google.maps.InfoWindow({
+        content:contentString2
+    });
+    
+        
+    var infoWindow3 = new google.maps.InfoWindow({
+        content:contentString3
+    });
+    
+     var infoWindow4 = new google.maps.InfoWindow({
+        content:contentString4
+    });
+    
+        
+    var infoWindow5 = new google.maps.InfoWindow({
+        content:contentString5
+    });
+    
+     var infoWindow6 = new google.maps.InfoWindow({
+        content:contentString6
+    });
+   
+    
+//    Markers
+var marker = new google.maps.Marker({
+      position: ocracoke,
+       map: map,
+       icon:image
+
+   });
+
+var marker2 = new google.maps.Marker({
+      position: teach,
+       map: map,
+       icon:image
+   });
+    
+var marker3 = new google.maps.Marker({
+      position: roanoke,
+       map: map,
+       icon:image
+
+   });
+
+var marker4 = new google.maps.Marker({
+      position: maco,
+       map: map,
+       icon:image
+   });
+    
+var marker5 = new google.maps.Marker({
+      position: elizabeth,
+       map: map,
+       icon:image
+
+   });
+
+var marker6 = new google.maps.Marker({
+      position: bath,
+       map: map,
+       icon:image
+   });
+
+//listners
+marker.addListener('click', function(){
+        infoWindow2.close();
+        infoWindow3.close();
+        infoWindow4.close();
+        infoWindow5.close();
+        infoWindow6.close();
+        infoWindow.open(map, marker);
+    });
+    
+marker2.addListener('click', function(){
+        infoWindow.close();
+        infoWindow3.close();
+        infoWindow4.close();
+        infoWindow5.close();
+        infoWindow6.close();
+        infoWindow2.open(map, marker2);
+    });
+        
+marker3.addListener('click', function(){
+        infoWindow.close();
+        infoWindow2.close();
+        infoWindow4.close();
+        infoWindow5.close();
+        infoWindow6.close();
+        infoWindow3.open(map, marker3);
+    });
+
+
+marker4.addListener('click', function(){
+        infoWindow.close();
+        infoWindow2.close();
+        infoWindow3.close();
+        infoWindow5.close();
+        infoWindow6.close();
+        infoWindow4.open(map, marker4);
+    });
+
+marker5.addListener('click', function(){
+        infoWindow.close();
+        infoWindow2.close();
+        infoWindow3.close();
+        infoWindow4.close();
+        infoWindow6.close();
+        infoWindow5.open(map, marker5);
+    });
+    
+marker6.addListener('click', function(){
+        infoWindow.close();
+        infoWindow2.close();
+        infoWindow3.close();
+        infoWindow4.close();
+        infoWindow5.close();
+        infoWindow6.open(map, marker6);
+    });
+
+//end init function
+}
+
+    </script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdrYz85mK4CJA0PqSmCNJ1ilDHBph0ZGM&callback=initMap">
+    </script>
+  </body>
+</html>
